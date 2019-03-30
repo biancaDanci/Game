@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+</head>
+<body>
+
+<script>
+    var config = {
+        type: Phaser.AUTO,
+        width: 1541,
+        height: 540,
+        physics: {
+            default: 'arcade',
+            arcade: {
+                gravity: { y: 200 }
+            }
+        },
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+    var game = new Phaser.Game(config);
+    var tile;
+    function preload ()
+    {
+
+        this.load.image('play_scene', 'assets/background/ba.jpg');
+        this.load.image('tile', 'assets/background/tile.png');
+        //tile.height=500;
+
+    }
+
+    function create ()
+    {
+        //game.physics.startSystem(Phaser.Physics.ARCADE);
+        this.add.image(770, 270, 'play_scene');
+        tile =this.physics.add.staticGroup();
+        tile.enableBody = true;
+        tile.create(200,100,'tile').setScale(0.5,0.5).refreshBody();
+
+        tile.create(900,150,'tile').setScale(0.5,0.5).refreshBody();
+
+        tile.create(500,250,'tile').setScale(0.4,0.4).refreshBody();
+        //this.add.image(200,100,'tile');
+        //tile.
+
+    }
+    function update(){
+        tile.y =-1;
+
+    }
+</script>
+
+</body>
+</html>
